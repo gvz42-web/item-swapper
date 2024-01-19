@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "../",
+    "module": "CommonJS",
+    "resolveJsonModule": false,
+    "esModuleInterop": true,
+    "target": "ESNext",
+    "outDir": "../dist/api",
+    "sourceMap": true,
+    "types": [
+      "node"
+    ],
+  }
+}
