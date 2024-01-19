@@ -2,7 +2,7 @@ export default interface IUser {
   _id?: string;
   nickname: string;
   hashPassword: string;
-  items: number[];
+  items: string[];
   token?: string;
   createdAt?: Date;
 }

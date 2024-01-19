@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema<IUser>({
     required: true
   },
   items: {
-    type: [Number],
+    type: [String],
     default: []
   },
   token: {

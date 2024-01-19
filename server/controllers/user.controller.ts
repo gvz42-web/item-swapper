@@ -40,8 +40,20 @@ async function login(data: ICredentials) {
   }
 }
 
+async function addItems(id: string, items: string[]) {
+  return User.updateOne({
+      _id: id
+    },
+    {
+      $push: {
+        items: items
+      }
+    })
+}
+
 export {
   getById,
   create,
-  login
+  login,
+  addItems
 }
