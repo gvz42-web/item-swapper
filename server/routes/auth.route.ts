@@ -11,8 +11,8 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
   login(req.body)
-    .then((user) => res.send(user))
-    .catch(err => res.send(err))
+    .then((user) => res.send({token: user.token}))
+    .catch(err => res.status(401).send(err))
 })
 
 export default router
