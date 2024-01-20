@@ -1,0 +1,13 @@
+<p-card header="Log in">
+  <form [formGroup]="loginForm" class="flex flex-column gap-4">
+    <div>
+      <label for="nickname">Nickname</label>
+      <input type="text" pInputText id="nickname" formControlName="nickname" class="w-full"/>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" pInputText id="password" formControlName="password" class="w-full"/>
+    </div>
+    <p-button (click)="login()">Log in</p-button>
+  </form>
+</p-card>
