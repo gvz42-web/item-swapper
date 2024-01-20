@@ -1,0 +1,9 @@
+<div *ngIf="n !== 1" class="item border-round-2xl bg-gray-600 shadow-8 flex flex-column" pBadge [value]="n.toString()">
+  <img [src]="'./assets/items/' + item + '.png'" alt="">
+  <p>{{item}}</p>
+</div>
+
+<div *ngIf="n === 1" class="item border-round-2xl bg-gray-600 shadow-8 flex flex-column">
+  <img [src]="'./assets/items/' + item + '.png'" alt="">
+  <p>{{item}}</p>
+</div>
