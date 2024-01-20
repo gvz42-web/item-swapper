@@ -1,0 +1,16 @@
+<div class="flex flex-column align-items-center h-screen justify-content-around">
+  <h1 class="m-3">Swap items</h1>
+  <div class="flex flex-column align-items-center">
+    <p class="text-gray-300" (click)="hello()">Your code:</p>
+    <span class="text-center mb-4 text-5xl">{{ code }}</span>
+  </div>
+  <div class="flex flex-column align-items-center gap-2">
+    <p class="m-1 text-gray-300">Your friend's code:</p>
+    <div class="code-input">
+      <div *ngFor="let s of inputCode" class="bg-gray-800 border-round-2xl text-4xl flex justify-content-center align-items-center">{{s}}</div>
+    </div>
+  </div>
+  <app-keyboard (input)="input($event)"/>
+</div>
+<p-button class="absolute top-0 left-0 p-2" label="Back" icon="pi pi-arrow-left" [text]="true" (click)="exit()"/>
+
