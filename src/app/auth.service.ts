@@ -1,34 +1,47 @@
 import { Injectable } from '@angular/core';
-import {ApiService} from "./api.service";
-import {Router} from "@angular/router";
-import {MessageService} from "primeng/api";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private token: string | undefined
+  private _token!: string
   public error: string | undefined
+  private _url = 'http://localhost:3000/auth/'
 
-  constructor(private api: ApiService, private router: Router, private messageService: MessageService) {
-    this.token = localStorage.getItem('token') || undefined
+  constructor(private http: HttpClient) {
+    const token = localStorage.getItem('token')
+    if (token) {
+      this.token = token
+    }
+  }
+
+  set token(value: string) {
+    this._token = value
+    localStorage.setItem('token', value)
+  }
+
+  get token() {
+    return this._token
   }
 
   isLoggedIn() {
-    // return !!this.token
-    return false
+    return !!this.token
   }
 
   login(nickname: string, password: string) {
-    this.api.login(nickname, password).subscribe((data: {token: string}) => {
-      if (data && data.token) {
-        localStorage.setItem('token', data.token)
-        // this.router.navigate()
-      }
-    },
-    (error) => {
-      console.log(error)
-      // this.messageService.add({severity: 'error', summary: 'Login failed', detail: error.error.message, life: 3000})
+    const request = this.http.post<{token: string}>(this._url + 'login', {
+      nickname,
+      password
+    })
+    request.subscribe((data) => this.token = data.token)
+    return request
+  }
+
+  register(nickname: string, password: string) {
+    return this.http.post<{token: string}>(this._url + 'register', {
+      nickname,
+      password
     })
   }
 }

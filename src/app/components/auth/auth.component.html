@@ -1,5 +1,6 @@
 <p-card header="Log in">
-  <form [formGroup]="loginForm" class="flex flex-column gap-4">
+  {{ this.error }}
+  <form [formGroup]="loginForm" class="flex flex-column gap-4" *ngIf="isLogin">
     <div>
       <label for="nickname">Nickname</label>
       <input type="text" pInputText id="nickname" formControlName="nickname" class="w-full"/>
@@ -9,5 +10,24 @@
       <input type="password" pInputText id="password" formControlName="password" class="w-full"/>
     </div>
     <p-button (click)="login()">Log in</p-button>
+    <p>Don't have an account? <a (click)="toggle()">Register</a></p>
   </form>
+
+  <form [formGroup]="registrationForm" class="flex flex-column gap-4" *ngIf="!isLogin">
+    <div>
+      <label for="nicknameREg">Nickname</label>
+      <input type="text" pInputText id="nicknameReg" formControlName="nickname" class="w-full"/>
+    </div>
+    <div>
+      <label for="passwordReg">Password</label>
+      <input type="password" pInputText id="passwordReg" formControlName="password" class="w-full"/>
+    </div>
+    <div>
+      <label for="repeatPasswordReg">Repeat password</label>
+      <input type="password" pInputText id="repeatPasswordReg" formControlName="repeatPassword" class="w-full"/>
+    </div>
+    <p-button (click)="register()">Create account</p-button>
+    <p>Have an account? <a (click)="toggle()">Log in</a></p>
+  </form>
+
 </p-card>

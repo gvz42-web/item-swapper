@@ -5,8 +5,8 @@ const router = express.Router()
 
 router.post('/register', (req, res) => {
   create(req.body)
-    .then((user) => res.send(user))
-    .catch(err => res.send(err))
+    .then((user) => res.send({token: user.token}))
+    .catch(err => res.status(401).send({message: 'Nickname is taken'}))
 })
 
 router.post('/login', (req, res) => {

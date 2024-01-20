@@ -15,7 +15,6 @@ import {AuthService} from "./auth.service";
 })
 export class AppComponent{
   title = 'item-swapper';
-  text = '';
 
   constructor(private api: ApiService, private auth: AuthService, private router: Router) {
     if (this.auth.isLoggedIn()) {
@@ -25,8 +24,4 @@ export class AppComponent{
     }
   }
 
-  login() {
-    this.api.login('gvz', '123456')
-      .subscribe((data) => this.text = JSON.stringify(data))
-  }
 }
