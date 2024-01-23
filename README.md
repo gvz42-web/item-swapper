@@ -1,27 +1,51 @@
 # ItemSwapper
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
+Status: `DRAFT`
 
-## Development server
+## Made with:
+Frontend
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- `Angular` 
+- `PrimeNG` 
+- `Socket.io`
 
-## Code scaffolding
+Backend
+- `Express`
+- `MongoDB`
+- `Socket.io`
+- `jsonwebtoken`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## About the project
+The main idea of the project is to develop an application for events and parties to encourage participants to interact more with each other.
 
-## Build
+How it should work:
+- Participants register in the application
+- At a certain point in time, items are distributed between them
+- During the event, participants exchange items with others in order to collect everything as quickly as possible
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Item exchange occurs when two participants enter each other's Emoji code: 
+![img.png](img.png)
 
-## Running unit tests
+## What's items?
+Nothing.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Just images with names.
+![img_1.png](img_1.png)
 
-## Running end-to-end tests
+## Usage
+You can place your own items (jpg images) to src/assets/items. The app uses filename (before .jpg) as identifier
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+But not there is no functionality to add items to user. So the only way to add them manually (in database for example)
 
-## Further help
+- `ng serve` to run frontend
+- `npm run server` to run backend
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Status
+It's just a draft now
+
+Now it only can show do authentication, display items, connect to other user, but without actual exchange.
+
+
+
+
+
