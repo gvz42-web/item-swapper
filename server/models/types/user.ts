@@ -4,5 +4,6 @@ export default interface IUser {
   hashPassword: string;
   items: string[];
   token?: string;
+  socket?: string;
   createdAt?: Date;
 }

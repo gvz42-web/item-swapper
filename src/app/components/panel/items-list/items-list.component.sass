@@ -1,4 +1,14 @@
 .items-list
   display: grid
-  grid-template-columns: 1fr 1fr
-  gap: 26px
+  max-width: 600px
+  padding: 0 10px
+  margin: 0 auto
+
+  &.columns-2
+    grid-template-columns: 1fr 1fr
+    gap: 26px
+
+  &.columns-3
+    grid-template-columns: repeat(3, minmax(100px, 1fr))
+    gap: 18px
+    font-size: 12px

@@ -51,9 +51,32 @@ async function addItems(id: string, items: string[]) {
     })
 }
 
+async function addSocket(id: string, socket: string) {
+  return User.updateOne({
+    _id: id
+  }, {
+    socket
+  })
+}
+
+async function removeSocket(id: string) {
+  return User.updateOne({
+    _id: id
+  }, {
+    socket: null
+  })
+}
+
+async function findBySocket(socket: string) {
+  return User.findOne({ socket })
+}
+
 export {
   getById,
   create,
   login,
-  addItems
+  addItems,
+  addSocket,
+  removeSocket,
+  findBySocket
 }

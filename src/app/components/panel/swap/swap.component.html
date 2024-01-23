@@ -1,4 +1,6 @@
-<div class="flex flex-column align-items-center h-screen justify-content-around">
+<p-button class="absolute top-0 left-0 p-2" icon="pi pi-arrow-left" [text]="true" [rounded]="true" (click)="exit()"/>
+
+<div *ngIf="status === 'ready'" class="flex flex-column align-items-center h-screen justify-content-around">
   <h1 class="m-3">Swap items</h1>
   <div class="flex flex-column align-items-center">
     <p class="text-gray-300" (click)="hello()">Your code:</p>
@@ -12,5 +14,28 @@
   </div>
   <app-keyboard (input)="input($event)"/>
 </div>
-<p-button class="absolute top-0 left-0 p-2" label="Back" icon="pi pi-arrow-left" [text]="true" (click)="exit()"/>
 
+
+<div *ngIf="status === 'looking'" class="flex flex-column align-items-center h-screen justify-content-center">
+  <h3>Waiting for your friend...</h3>
+  <p-progressSpinner/>
+</div>
+
+<div *ngIf="status === 'friendConnected'" class="flex flex-column align-items-center">
+  <h3>Swap w/ {{ swap.friendName }}</h3>
+  <div class="mb-6 mt-4">
+    <div class="mb-4 text-gray-500 text-center">Friend's offer:</div>
+    <app-items-list [items]="friendsItems" [columnsCount]="3"/>
+  </div>
+
+  <div class="card mb-4">
+    <div class="mb-4 text-gray-500 text-center">Your offer:</div>
+    <app-items-list [items]="offerItems" [columnsCount]="3" (choose)="toggleItem($event,'back')"/>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-center">Your items</h3>
+    <app-items-list [items]="allItems" [columnsCount]="3" (choose)="toggleItem($event, 'send')"/>
+  </div>
+
+</div>
